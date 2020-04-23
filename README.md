@@ -31,9 +31,9 @@ The CLI also supports setting the time spend between sending pings, in milliseco
 - The pinging starts at StartPinging, which is at the bottom of ping/ping.go
 - From there, it enters an infinite loop of calling the goroutine SendPing (using go, so it is on another thread), which uses ICMP WriteTo to send the ping.
 - For every SendPing call that is made, a ReceivePing call is also made (also on another thread), which waits to receive an echo.
-- Once ReceivePing parses the message, it adds the time it took to receive it (the round-trip time) to a channel.
-- GenerateStats is a function that prints statistics everytime a packet is received. It does this by ranging over the channel ReceivePing adds RTTs to, meaning
-  that the inner for loop is invoked whenever a new RTT is added to the channel. It prints the min/max/avg as well as the ratio of received to sent packets.
+- Once ReceivePing parses the message, it adds the time it took to receive it (the round-trip time, RTT) to a channel.
+- GenerateStats is a function that prints statistics everytime a packet is received. It does this by ranging over the channel that ReceivePing adds RTTs to, meaning
+  that the loop is iterated whenever a new RTT is added to the channel. It prints the min/max/avg RTTs as well as the ratio of received to sent packets.
 
 ## Tests:
 
