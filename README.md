@@ -21,7 +21,7 @@ For example:
 
 Terminate by entering CTRL-C
 
-The CLI also supports setting the time spend between sending pings, in milliseconds (default is 1000):
+The CLI also supports setting the time spent between sending pings, in milliseconds (default is 1000):
 
 `go run main.go ping cloudflare.com -w 100`
 
