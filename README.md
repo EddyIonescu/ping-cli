@@ -39,7 +39,7 @@ The CLI also supports setting the time spend between sending pings, in milliseco
 
 ## Tests:
 
-- The CLI was tested for varying network scenarios locally using the Network Link Conditioner tool that is build into MacOS.
+- The CLI was tested for varying network scenarios locally using the Network Link Conditioner tool that is built into MacOS.
 - It allows simulating less-than-ideal networks, including slowness and packet loss.
 - It was through simulating a 10% packet loss and increased latency that the benefit of using goroutines became apparent, as the
   program would have otherwise hung and been unable to ping every second and receive packets.
