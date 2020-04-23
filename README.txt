@@ -1,3 +1,9 @@
+Installation:
+
+go get github.com/spf13/cobra
+go get golang.org/x/net/icmp
+go get golang.org/x/net/ipv4
+
 Usage:
 
 go run main.go ping [HOST | IPV4]

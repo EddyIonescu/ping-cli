@@ -1,18 +1,28 @@
 # ping-cli
 Ping your favourite websites with this CLI
 
+## Installation:
+
+go get github.com/spf13/cobra
+go get golang.org/x/net/icmp
+go get golang.org/x/net/ipv4
+
 ## Usage:
 
-`go run main.go ping [HOST | IPV4]`
+`go run main.go ping [HOST | IPV4]` or `./ping-cli ping [HOST | IPV4]`
 
 For example:
+
 `go run main.go ping cloudflare.com`
+
 `go run main.go ping 1.1.1.1`
 
 Terminate by entering CTRL-C
 
 The CLI also supports setting the time spend between sending pings, in milliseconds (default is 1000):
+
 `go run main.go ping cloudflare.com -w 100`
+
 `go run main.go ping cloudflare.com --wait 100`
 
 ## Design:
