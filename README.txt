@@ -1,21 +1,18 @@
-# ping-cli
-Ping your favourite websites with this CLI
+Usage:
 
-## Usage:
-
-`go run main.go ping [HOST | IPV4]`
+go run main.go ping [HOST | IPV4]
 
 For example:
-`go run main.go ping cloudflare.com`
-`go run main.go ping 1.1.1.1`
+go run main.go ping cloudflare.com
+go run main.go ping 1.1.1.1
 
 Terminate by entering CTRL-C
 
 The CLI also supports setting the time spend between sending pings, in milliseconds (default is 1000):
-`go run main.go ping cloudflare.com -w 100`
-`go run main.go ping cloudflare.com --wait 100`
+go run main.go ping cloudflare.com -w 100
+go run main.go ping cloudflare.com --wait 100
 
-## Design:
+Design:
 
 - Command-line parsing is in cmd/ping.go, it was set up using Cobra
 - The pinging starts at StartPinging, which is at the bottom of ping/ping.go
@@ -25,9 +22,13 @@ The CLI also supports setting the time spend between sending pings, in milliseco
 - GenerateStats is a function that prints statistics everytime a packet is received. It does this by ranging over the channel ReceivePing adds RTTs to, meaning
   that the inner for loop is invoked whenever a new RTT is added to the channel. It prints the min/max/avg as well as the ratio of received to sent packets.
 
-## Tests:
+Tests:
 
 - The CLI was tested for varying network scenarios locally using the Network Link Conditioner tool that is build into MacOS.
 - It allows simulating less-than-idea networks, including slowness and packet loss.
 - It was through simulating a 10% packet loss and increased latency that the benefit of using goroutines became apparent, as the
   program would have otherwise hung and been unable to ping every second and receive packets.
+
+References:
+- The ICMP library source code was very useful for learning how the functions worked and for looking at an example:
+  https://github.com/golang/net/tree/master/icmp
